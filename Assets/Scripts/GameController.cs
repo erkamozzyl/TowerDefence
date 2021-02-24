@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,9 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public int coin;
+    public GameObject enemyPrefab;
+    public GameObject alliesPrefab;
+    public GameObject towerPrefab;
     void Start()
     {
         StartCoroutine(StartEnemyWave());
@@ -16,8 +20,38 @@ public class GameController : MonoBehaviour
         GetEnemy();
     }
 
-    public void GetEnemy()
+    public  GameObject GetEnemy()
     {
-        Debug.Log("Enemy object created");
+        GameObject prefabInstance = Instantiate(enemyPrefab);
+        prefabInstance.transform.position = new Vector3(-4, 1, 1);
+        return prefabInstance;
+    }
+    
+    public GameObject GetTower()
+    {
+        GameObject prefabInstance = Instantiate(towerPrefab);
+        prefabInstance.transform.position = new Vector3(0, 1, 1);
+        return prefabInstance;
+    }
+    
+    public GameObject GetAlliedSoldier()
+    {
+        GameObject prefabInstance = Instantiate(alliesPrefab);
+        prefabInstance.transform.position = new Vector3(4, 1, 1);
+        
+        return prefabInstance;
+    }
+
+     void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GetTower();
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            GetAlliedSoldier();
+        }
     }
 }
