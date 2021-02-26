@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     public  GameObject GetEnemy()
     {
         GameObject prefabInstance = Instantiate(enemyPrefab);
-        prefabInstance.transform.position = new Vector3(-4, 1, 1);
+        prefabInstance.transform.position = new Vector3(6, 1, 0);
         return prefabInstance;
     }
     

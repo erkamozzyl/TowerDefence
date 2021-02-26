@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
@@ -11,7 +13,8 @@ public class Enemy : MonoBehaviour
     public int attack;
     public bool inAttack;
     public Image healthBar;
-    public string attackType; 
+    public string attackType;
+    public NavMeshAgent agent;
     void Start()
     {
         name = unit.name;
@@ -22,4 +25,8 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy Object Created. "  + name);
     }
 
+    private void Update()
+    {
+        agent.SetDestination(new Vector3(-6, 1, 0));
+    }
 }
